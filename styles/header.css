@@ -1,0 +1,178 @@
+.cabecalho__menu-hamburguer {
+    width: 24px;
+    height: 24px;
+    background-image: url(../img/Menu.svg);
+    background-repeat: no-repeat;/*não deixar a imagem se repetir*/
+    background-position: center;/*centralizar o icone o menu*/
+    display: inline-block;
+}
+/*para o menu hamburguer*/
+.container__botao:checked ~.container__rotulo >.cabecalho__menu-hamburguer {
+    background-image: url("../img/menuaberto.svg");
+}
+/*para o menu hamburguer mudar de cor*/
+.container__botao:checked ~.container__rotulo {
+    background: var(--azul-degrade);
+}
+
+.cabecalho {
+    background-color: var(--branco);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;/*para posicionar a lista do menu*/
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.container__imagem {
+    padding:1em;
+}
+
+.lista-menu {
+    display: none;
+    position: absolute;/*para pocisionar a lista do menu*/
+    top: 100%;
+    width: 60vw;/*aumentou a caixa da lista do menu*/
+}
+
+.container__botao:checked~.lista-menu { /*usado para fazer sumir a lista do menu hamburgur*/
+    display: block;
+}
+
+.lista-menu__titulo, 
+.lista-menu__item {
+    padding: 1em;
+    background-color: var(--branco);
+}
+
+.lista-menu__titulo {
+    color: var(--laranja);
+    font-weight: 700;
+}
+
+.lista-menu__link {
+    background: var(--azul-degrade);
+    -webkit-background-clip: text; /*daqui até o background clip foi retirado do projeto do figma*/
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+}
+
+.container__botao {
+    display: none;
+}
+
+.container__titulo {
+    display: none; /*não deixa o nome AluraBooks aparecer no display do celular*/
+}
+
+.opções {
+    display: none;
+}
+
+.container__texto {
+    display: none;
+}
+
+/*media query para tablet*/
+@media screen and (min-width: 1024px) {
+    .container__titulo, 
+    .container__titulo--negrito{
+        font-family:var(--fonte-secundario);
+        font-size: 30px;
+    }
+    .container__titulo{
+        font-weight: 400;
+        display: block; /*aparece o nome AluraBooks, e os outros nomes quando a tela chega em 1024*/
+    }
+
+    .container__titulo--negrito {
+        font-weight: 700;
+    }
+
+    .opções {
+        display: flex;
+    }
+
+    .opções__item {
+        padding:0 1em;
+        text-transform: uppercase;
+    }
+
+    .opções__link {
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .container__imagem-transparente {
+        display: none;
+    }
+
+    .cabecalho__menu-hamburguer {
+        display: none;
+    }
+
+    .opções__botão:checked ~ .lista-menu {
+        display: block;
+        width: auto;
+    }
+
+    .opções__botão {
+        display: none;
+    }   
+
+    .opções__botão:checked ~.opções__rotulo>.opções__item {
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    .opções__item {
+        padding: 1em 2em;
+    }
+
+    /*para quando passar o mouse no item da categoria mudar de cor*/
+    .lista-menu__item:hover {
+        background: var(--azul-degrade);
+    }
+
+    .lista-menu__item:hover > .lista-menu__link {
+        -webkit-text-fill-color: var(--branco);
+        text-decoration: none;
+    }
+
+    .opções__item:hover > .opções__link {
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    .container__link:hover > .container__imagem {
+        background: var(--cinza-item);
+    }
+}
+
+@media screen and (min-width: 1728px) {/*irá colocar no os iten minha sacola e meu perfil alinhados*/
+    .container__link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .cabecalho {
+        padding: 0 2em;
+    }
+
+    .opções {
+        margin-right: auto;
+    }
+
+    .container__texto {
+        display: block;
+    }
+}
+
+
